@@ -52,8 +52,10 @@ jobs:
         # - fail only for high or critical severity vulns
       - run:
           name: Snyk Test
-          command: |snyk test
-            snyk version
+          command: |
+            snyk auth $SNYK_TOKEN
+            snyk test --severity-threshold=high --fail-on=upgradable
+
  
 workflows:
   tsm-bootcamp:
